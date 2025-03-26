@@ -40,7 +40,7 @@ namespace eCommerce.API.Controller
         {
             try
             {
-                if (request == null) { return BadRequest("Invalid login data"); }
+                if (request == null) return BadRequest("Invalid login data"); 
 
                 AuthenticationResponse response = await userService.Login(request);
 

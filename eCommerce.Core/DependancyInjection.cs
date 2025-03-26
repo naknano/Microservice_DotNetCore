@@ -1,5 +1,8 @@
-﻿using eCommerce.Core.Service;
+﻿using eCommerce.Core.DTO;
+using eCommerce.Core.Service;
 using eCommerce.Core.ServiceContracts;
+using eCommerce.Core.Validators;
+using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace eCommerce.Core
@@ -19,6 +22,11 @@ namespace eCommerce.Core
 
 
             services.AddTransient<IUserService, UserService>();
+            
+
+            // FlueValidator in core layer
+            services.AddValidatorsFromAssemblyContaining<LoginRequestValidator>();
+
             return services;
         }
     }

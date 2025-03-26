@@ -8,19 +8,18 @@ using System.Security.Authentication;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eCommerce.Core.Map
+namespace eCommerce.Core.Map;
+
+public class ApplicationUserMappingProfile : Profile 
 {
-    class ApplicationUserMappingProfile : Profile 
+    public ApplicationUserMappingProfile() 
     {
-        public ApplicationUserMappingProfile() 
-        {
 
-            // source to destination
-            CreateMap<ApplicationUser, AuthenticationResponse>()
-                .ForMember(dest => dest.Success, opt => opt.Ignore())
-                .ForMember(dest => dest.Token, opt => opt.Ignore());
-        }
-
-
+        // source to destination
+        CreateMap<ApplicationUser, AuthenticationResponse>()
+            .ForMember(dest => dest.Success, opt => opt.Ignore())
+            .ForMember(dest => dest.Token, opt => opt.Ignore());
     }
+
+
 }

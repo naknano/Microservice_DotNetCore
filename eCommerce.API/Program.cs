@@ -1,7 +1,18 @@
+// Infrastructure
 using eCommerce.Infrastructure;
+
+// Core
 using eCommerce.Core;
+using eCommerce.Core.Map;
+using eCommerce.Core.Entity;
+
+
+// Exten library
 using eCommerce.API.Middlewares;
 using System.Text.Json.Serialization;
+using FluentValidation;
+using FluentValidation.AspNetCore;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +26,12 @@ builder.Services.AddControllers().AddJsonOptions(
         options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
 });
 
+// Mapper 
+builder.Services.AddAutoMapper(typeof(ApplicationUserMappingProfile).Assembly);
+
+
+// Add FluentValidations
+builder.Services.AddFluentValidationAutoValidation();
 
 var app = builder.Build();
 
